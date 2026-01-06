@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-template-scss": {
+    "portfolio-src": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-template-scss:build:production"
+              "buildTarget": "portfolio-src:build:production"
             },
             "development": {
-              "buildTarget": "angular-template-scss:build:development"
+              "buildTarget": "portfolio-src:build:development"
             }
           },
           "defaultConfiguration": "development"
