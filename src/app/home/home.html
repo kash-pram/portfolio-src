@@ -1,0 +1,132 @@
+<!-- src/app/home/home.html -->
+<div class="portfolio">
+  <header class="header">
+    <nav class="nav">
+      <div class="nav-brand">Prakash M.</div>
+      <ul class="nav-links" [class.mobile-open]="mobileMenuOpen()">
+        <li><a (click)="scrollToSection('about')">About</a></li>
+        <li><a (click)="scrollToSection('experience')">Experience</a></li>
+        <li><a (click)="scrollToSection('skills')">Skills</a></li>
+        <li><a (click)="scrollToSection('projects')">Projects</a></li>
+        <li><a (click)="scrollToSection('contact')">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" (click)="themeService.toggleTheme()">
+          @if (themeService.isDarkMode()) {
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          } @else {
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          }
+        </button>
+        <button class="hamburger" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Hi, I'm Prakash Mariappan</h1>
+      <p class="hero-subtitle">Full-Stack Developer & UI/UX Enthusiast</p>
+      <button class="cta-button" (click)="scrollToSection('projects')">View My Work</button>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text">
+        I'm a passionate full-stack developer with almost 9 years of experience building modern web applications.
+        I specialize in Angular, TypeScript, and crafting beautiful, intuitive user interfaces that bring ideas to life through code and creativity.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience" class="section experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        @for (exp of experiences; track exp.company) {
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3 class="timeline-role">{{ exp.role }}</h3>
+              <div class="timeline-company">{{ exp.company }}</div>
+              <div class="timeline-period">{{ exp.period }}</div>
+              <p class="timeline-description">{{ exp.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        @for (skill of skills; track skill.name) {
+          <div class="skill-card">
+            <div class="skill-header">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-percent">{{ skill.level }}%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" [style.width.%]="skill.level"></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        @for (project of projects; track project.title) {
+          <div class="project-card">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-tags">
+              @for (tag of project.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-text">I'm always open to discussing new projects and opportunities.</p>
+      <div class="contact-links">
+        <!-- <a href="mailto:myemail@gmail.com" class="contact-button">Email Me</a> -->
+        <a href="https://github.com/kash-pram" target="_blank" class="contact-button">GitHub</a>
+        <a href="https://www.linkedin.com/in/kash-pram/" target="_blank" class="contact-button">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; {{ currentYear }} kash-pram. All rights reserved.</p>
+  </footer>
+</div>
